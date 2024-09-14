@@ -1,26 +1,169 @@
 {
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "latexmk (latexmkrc)",
-            "tools": [
-                "latexmk_rconly"
-            ]
-        },
+    "latex-workshop.intellisense.citation.backend": "biblatex",
+    // (in this file you may have also configured outdir, recipes and tools)
+    "latex-workshop.latex.outDir": "%DIR%/build/",
+    "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
-            "tools": [
-                "latexmk"
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
             ]
         },
         {
-            "name": "xelatex -> bibtex -> xelatex * 2",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
             ]
-        }
+        },
+        {
+            "name": "xelatexArg",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": ["--output-directory=%OUTDIR%", "%DOCFILE%"],
+            "env": {}
+          }
     ],
-    "latex-workshop.latex.outDir": "%DIR%/out"
+"latex-workshop.latex.recipes": [
+ {
+  "name": "pdfLaTeX",
+  "tools": [
+   "pdflatex"
+  ]
+ },
+ {
+  "name": "latexmk 🔃",
+  "tools": [
+   "latexmk"
+  ]
+ },
+ {
+  "name": "xelatex",
+  "tools": [
+   "xelatex"
+  ]
+ },
+ {
+  "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+  "tools": [
+   "pdflatex",
+   "bibtex",
+   "pdflatex",
+   "pdflatex"
+  ]
+ },
+ {
+ "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+ "tools": [
+   "xelatex",
+   "bibtex",
+   "xelatex",
+   "xelatex"
+  ]
+ },
+ {
+    "name": "pdflatex -> biber -> pdflatex*2",
+    "tools": [
+        "pdflatex", 
+        "biber", 
+        "pdflatex", 
+        "pdflatex"
+    ]
+  },
+  {
+    "name": "xelatex ➞ biber ➞ xelatex`×2",
+    "tools": [
+      "xelatex",
+      "biber",
+      "xelatex",
+      "xelatex"
+     ]
+    }
+],
+"latex-workshop.view.pdf.viewer": "browser",
+"latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk"
+],
+//下面这段是语法检查模块
+//{
+"ltex.enabled": true,
+"[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+},
+"latex-workshop.latex.recipe.default": "lastUsed",
+"latex-workshop.view.outline.sections": [
+    "part",
+    "chapter",
+    "Csection",
+    "section",
+    "subsection",
+    "subsubsection",
+    
+],
+"editor.wordWrap": "on",
+"workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+},
+"latex-workshop.latex.autoBuild.run": "never",
+"editor.accessibilitySupport": "off",
+"pyqt-integration.qtdesigner.path": "/Applications/Qt Designer.app/Contents/MacOS/Designer",
+"editor.suggestSelection": "first",
+"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+"lsby_gitee_vscode_plugin.personal_access_tokens": "096eca87ccee46e0c0cdcb826b816cb3",
+"latex-workshop.intellisense.bibtexJSON.replace": {
+
+}
 }
